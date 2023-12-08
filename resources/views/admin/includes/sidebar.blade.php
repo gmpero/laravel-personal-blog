@@ -8,9 +8,17 @@
             data-accordion="false">
             <li class="nav-item">
                 <a href="{{route('admin.category.index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-th-list"></i>
+                    <i class="nav-icon fas fa-th-list mr-2"></i>
                     <p>
                         Категории
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('admin.tag.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-hashtag mr-2"></i>
+                    <p>
+                        Теги
                     </p>
                 </a>
             </li>
