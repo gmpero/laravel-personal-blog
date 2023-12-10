@@ -41,7 +41,7 @@
                                 <div class="text-danger">Это поле необходимо заполнить</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group w-50">
                                 <label for="exampleInputFile">Добавить превью</label>
                                 <div class="input-group">
                                     <div class="custom-file">
@@ -52,8 +52,11 @@
                                         <span class="input-group-text">Загрузка</span>
                                     </div>
                                 </div>
+                                @error('preview_image')
+                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group w-50">
                                 <label for="exampleInputFile">Добавить главное изображение</label>
                                 <div class="input-group">
                                     <div class="custom-file">
@@ -64,6 +67,23 @@
                                         <span class="input-group-text">Загрузка</span>
                                     </div>
                                 </div>
+                                @error('main_image')
+                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                @enderror
+                            </div>
+                            <div class="form-group w-50">
+                                <label>Выберите категорию</label>
+                                <select name="category_id" class="form-control">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}"
+                                            {{ $category->id == old('category_id') ? ' selected' : '' }}>
+                                            {{ $category->title }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('category_id')
+                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-block btn-outline-primary" value="Добавить">
