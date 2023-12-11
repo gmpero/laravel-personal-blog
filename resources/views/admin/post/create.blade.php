@@ -28,7 +28,7 @@
                     <div class="col-12">
                         <form action="{{route('admin.post.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group w-50">
                                 <input type="text" class="form-control" name="title" placeholder="Название поста"
                                        value="{{old('title')}}">
                                 @error('title')
@@ -49,7 +49,7 @@
                                         <label class="custom-file-label">Выберите фото</label>
                                     </div>
                                     <div class="input-group-append">
-                                        <span class="input-group-text">Загрузка</span>
+                                        <span class="input-group-text">loading</span>
                                     </div>
                                 </div>
                                 @error('preview_image')
@@ -64,7 +64,7 @@
                                         <label class="custom-file-label">Выберите фото</label>
                                     </div>
                                     <div class="input-group-append">
-                                        <span class="input-group-text">Загрузка</span>
+                                        <span class="input-group-text">loading</span>
                                     </div>
                                 </div>
                                 @error('main_image')
@@ -85,7 +85,21 @@
                                 <div class="text-danger">Это поле необходимо заполнить</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group w-50">
+                                <label>Выберите теги</label>
+                                <select class="select2" name="tags_id[]" multiple="multiple"
+                                        data-placeholder="Выберите теги" style="width: 100%;">
+                                    @foreach($tags as $tag)
+                                        <option
+                                            {{is_array(old('tags_id')) && in_array($tag->id, old('tags_id')) ? ' selected' : ''}}
+                                            value="{{$tag->id}}">{{$tag->title}}
+                                        </option>
+                                    @endforeach
+                                        <!-- НУЖНО ПОФИКСИТЬ -->
+                                        <!-- НЕТ ПРОВЕРКИ ОШИБОК + ЕСЛИ НЕ ДОБАВЛЯТЬ ТЕГИ ПОПАДАЕШЬ НА 404 -->
+                                </select>
+                            </div>
+                            <div class="form-group w-25">
                                 <input type="submit" class="btn btn-block btn-outline-primary" value="Добавить">
                             </div>
                         </form>
