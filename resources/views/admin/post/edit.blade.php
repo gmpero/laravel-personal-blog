@@ -26,26 +26,28 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('admin.post.update', $post->id)}}" method="POST" enctype="multipart/form-data" class="w-100">
+                        <form action="{{route('admin.post.update', $post->id)}}" method="POST"
+                              enctype="multipart/form-data" class="w-100">
                             @csrf
                             @method('PATCH')
                             <div class="form-group w-50">
                                 <input type="text" class="form-control" name="title" placeholder="Название поста"
                                        value="{{$post->title}}">
                                 @error('title')
-                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <textarea id="summernote" name="content">{{$post->content}}</textarea>
                                 @error('content')
-                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-50">
                                 <label for="exampleInputFile">Добавить превью</label>
                                 <div class="w-50 mb-1">
-                                    <img src="{{url('storage/' . $post->preview_image)}}" alt="preview_image" class="w-100">
+                                    <img src="{{url('storage/' . $post->preview_image)}}" alt="preview_image"
+                                         class="w-100">
                                 </div>
                                 <div class="input-group">
                                     <div class="custom-file">
@@ -57,7 +59,7 @@
                                     </div>
                                 </div>
                                 @error('preview_image')
-                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-50">
@@ -75,7 +77,7 @@
                                     </div>
                                 </div>
                                 @error('main_image')
-                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-50">
@@ -89,7 +91,7 @@
                                     @endforeach
                                 </select>
                                 @error('category_id')
-                                <div class="text-danger">Это поле необходимо заполнить</div>
+                                <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
                             <div class="form-group w-50">
@@ -102,8 +104,9 @@
                                             value="{{$tag->id}}">{{$tag->title}}
                                         </option>
                                     @endforeach
-                                    <!-- НУЖНО ПОФИКСИТЬ -->
-                                    <!-- НЕТ ПРОВЕРКИ ОШИБОК + ЕСЛИ НЕ ДОБАВЛЯТЬ ТЕГИ ПОПАДАЕШЬ НА 404 -->
+                                    @error('tags_id')
+                                    <div class="text-danger">{{$message}}</div>
+                                    @enderror
                                 </select>
                             </div>
                             <div class="form-group w-25">
