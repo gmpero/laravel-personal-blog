@@ -7,11 +7,10 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6 d-flex align-items-center">
-                        <h1 class="m-0 mr-3">{{$post->title}}</h1>
-                        <a href="{{route('admin.category.edit', $post->id)}}" class="text-success mr-3"><i
-                                class="fas fa-pen"></i></a>
+                        <h1 class="m-0 mr-3">{{$user->title}}</h1>
+                        <a href="{{route('admin.user.edit', $user->id)}}" class="text-success mr-3"><i class="fas fa-pen"></i></a>
                         <form method="POST"
-                              action="{{route('admin.category.delete', $post->id)}}">
+                              action="{{route('admin.user.delete', $user->id)}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="border-0 bg-transparent">
@@ -37,22 +36,16 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-body p-0">
-                                <table class="table table-hover">
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap">
                                     <tbody>
                                     <tr>
                                         <td>ID</td>
-                                        <td>{{$post->id}}</td>
+                                        <td>{{$user->id}}</td>
                                     </tr>
                                     <tr>
                                         <td>Название</td>
-                                        <td>{{$post->title}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Содержание</td>
-                                        <td>
-                                            {!!$post->content!!}
-                                        </td>
+                                        <td>{{$user->title}}</td>
                                     </tr>
                                     </tbody>
                                 </table>
