@@ -8,7 +8,8 @@
                 <div class="row mb-2">
                     <div class="col-sm-6 d-flex align-items-center">
                         <h1 class="m-0 mr-3">{{$user->name}}</h1>
-                        <a href="{{route('admin.user.edit', $user->id)}}" class="text-success mr-3"><i class="fas fa-pen"></i></a>
+                        <a href="{{route('admin.user.edit', $user->id)}}" class="text-success mr-3"><i
+                                class="fas fa-pen"></i></a>
                         <form method="POST"
                               action="{{route('admin.user.delete', $user->id)}}">
                             @csrf
@@ -50,6 +51,14 @@
                                     <tr>
                                         <td>Почта</td>
                                         <td>{{$user->email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Роль</td>
+                                        <td>@if($user->role === 0)
+                                                Читатель
+                                            @else
+                                                Администратор
+                                            @endif</td>
                                     </tr>
                                     </tbody>
                                 </table>

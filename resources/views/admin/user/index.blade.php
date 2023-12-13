@@ -38,6 +38,7 @@
                                         <th>ID</th>
                                         <th>Пользователь</th>
                                         <th>Email</th>
+                                        <th></th>
                                         <th colspan="3" class="text-center">Действия</th>
                                     </tr>
                                     </thead>
@@ -47,6 +48,11 @@
                                             <td>{{$user->id}}</td>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
+                                            <td>
+                                                @if($user->role === 1)
+                                                    Администратор
+                                                @endif
+                                            </td>
                                             <td class="col-1 text-center"><a
                                                     href="{{route('admin.user.show', $user->id)}}"><i
                                                         class="far fa-eye"></i></a></td>
